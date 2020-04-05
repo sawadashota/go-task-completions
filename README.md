@@ -25,11 +25,11 @@ task -<TAB>
 
 Clone the repository inside your oh-my-zsh repo:
 ```bash
-git clone https://github.com/sawadashota/go-task-completions.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/go-task-completions
+git clone https://github.com/sawadashota/go-task-completions.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/task
 ```
 
 Enable it in your .zshrc by adding it to your plugin list and reloading the completion:
 ```bash
-plugins=(… go-task-completions)
+plugins=(… task)
 autoload -U compinit && compinit
 ```
