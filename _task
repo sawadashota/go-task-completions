@@ -5,7 +5,8 @@ function __list() {
     local -a scripts
 
     if [ -f Taskfile.yml ]; then
-        scripts=($(task -l | sed '1d' | sed 's/://' | awk '{ print $2 }'))
+        tasks=$(task -l | sed -En "s/^\* ([^[:space:]]+):[[:space:]]+(.+)$/\1 \2/p" | awk '{gsub(/:/,"\\:",$1)} 1' | awk "{ st = index(\$0,\" \"); print \$1 \":\" substr(\$0,st+1)}")
+        scripts=("${(@f)$(echo $tasks)}")
         _describe 'script' scripts
     fi
 }
